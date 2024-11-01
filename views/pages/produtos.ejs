@@ -1,0 +1,30 @@
+<%- contentFor('body') %>
+
+<h1 class="mb-4">
+  <small>Produtos Recentes</small>
+</h1>
+
+<hr />
+
+<% produtos.forEach(function (produto) { %>
+
+<div class="card mb-4">
+  <img  height="300px"
+    class="card-img-top"
+    src="<%= produto.foto ? produto.foto : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiYFDuBIjxE2subRE-vIQ3ol4UmgCIA-ZxTw&s' %>"
+    alt="Imagem de capa do card"
+  />
+
+  <div class="card-body">
+    <h5 class="card-title"><%=produto.nome%></h5>
+    <p class="card-text">
+      <%-produto.descricao.substr(0,200)%>...
+    </p>
+    <a href="/produto/<%=produto.id%>" class="btn btn-primary">Saiba mais</a>
+  </div>
+  <div class="card-footer text-muted">
+    Disponível desde <%=produto.produtoadoEm%>
+  </div>
+</div>
+
+<% }) %>
